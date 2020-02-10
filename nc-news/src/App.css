@@ -46,3 +46,9 @@
 		"content2"
 		"featurebar2";
 }
+
+.content1 {
+	grid-area: content1;
+	border: 2px black;
+	padding: 5px;
+}

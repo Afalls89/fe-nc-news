@@ -1,8 +1,10 @@
 const axios = require("axios");
 
-const getArticles = () => {
+const getArticles = sort_by => {
 	return axios
-		.get("https://be-nc-news-2.herokuapp.com/api/articles")
+		.get("https://be-nc-news-2.herokuapp.com/api/articles", {
+			params: { sort_by }
+		})
 		.then(({ data }) => {
 			return data.articles;
 		});
