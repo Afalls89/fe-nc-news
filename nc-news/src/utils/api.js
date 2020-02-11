@@ -17,9 +17,8 @@ const getSingleArticle = article_id => {
 	});
 };
 
-const patchVote = (article_id, inc_vote, type) => {
-	console.log(inc_vote);
-	return axios.patch(`${URL}/${type}/${article_id}`, { inc_vote });
+const patchVote = (id, inc_vote, type) => {
+	return axios.patch(`${URL}/${type}/${id}`, { inc_vote });
 };
 
 const getTopics = () => {
@@ -28,4 +27,21 @@ const getTopics = () => {
 	});
 };
 
-module.exports = { getArticles, getSingleArticle, patchVote, getTopics };
+const getComments = article_id => {
+	return axios
+		.get(`${URL}/articles/${article_id}/comments`)
+		.then(({ data }) => {
+			return data.comments;
+		});
+};
+
+const postComment = (username, body) => {};
+
+module.exports = {
+	getArticles,
+	getSingleArticle,
+	patchVote,
+	getTopics,
+	getComments,
+	postComment
+};

@@ -15,7 +15,7 @@ class App extends Component {
 				<Title loggedInUser={this.state.user} />
 				<NavBar />
 				<Router>
-					<SingleArticle path="/articles/:article_id" />
+					<SingleArticle path="/articles/:article_id" user={this.state.user} />
 					<ArticleList path="/" />
 					<ArticleList path="/topics/:topic_slug" />
 					<TopicList path="/topics" />

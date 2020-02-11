@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import Voter from "./Voter";
+import CommentList from "./CommentList";
 
 class SingleArticle extends Component {
 	state = {
@@ -30,8 +31,8 @@ class SingleArticle extends Component {
 			comment_count
 		} = this.state.singleArticle;
 		return (
-			<>
-				<main className="singleArticle">
+			<main className="content">
+				<section className="singleArticle">
 					<h1>{title}</h1>
 					<p>Topic : {topic}</p>
 					<p>{body}</p>
@@ -39,11 +40,10 @@ class SingleArticle extends Component {
 					<li>Date created {created_at}</li>
 					<li>Votes {votes}</li>
 					<li>Comments {comment_count}</li>
-				</main>
-				<section className="singleArticleVote">
-					<Voter votes={votes} article_id={article_id} type={"articles"} />
 				</section>
-			</>
+				<Voter votes={votes} id={article_id} type={"articles"} />
+				<CommentList article_id={article_id} user={this.props.user} />
+			</main>
 		);
 	}
 }

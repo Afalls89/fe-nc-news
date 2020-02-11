@@ -39,7 +39,7 @@ class ArticleList extends Component {
 			return Loader();
 		}
 		return (
-			<>
+			<main className="content">
 				<section className="sortBy">
 					<form onSubmit={this.handleSubmit}>
 						<select
@@ -50,28 +50,26 @@ class ArticleList extends Component {
 							<option value="created_at">date created</option>
 							<option value="comment_count">comment count</option>
 							<option value="votes">votes</option>
-							<option value="">all</option>
 						</select>
 						<button>Sort By</button>
 					</form>
 				</section>
-				<main className="content">
-					<section className="content1">
-						{this.state.articles.map(article => {
-							return (
-								<ArticleCard
-									key={article.article_id}
-									article_id={article.article_id}
-									author={article.author}
-									title={article.title}
-									votes={article.votes}
-									comment_count={article.comment_count}
-								/>
-							);
-						})}
-					</section>
-				</main>
-			</>
+
+				<section className="articles">
+					{this.state.articles.map(article => {
+						return (
+							<ArticleCard
+								key={article.article_id}
+								article_id={article.article_id}
+								author={article.author}
+								title={article.title}
+								votes={article.votes}
+								comment_count={article.comment_count}
+							/>
+						);
+					})}
+				</section>
+			</main>
 		);
 	}
 }

@@ -21,7 +21,7 @@ class TopicList extends Component {
 		}
 
 		return (
-			<main>
+			<main className="content">
 				<section>
 					<h1>Topics</h1>
 				</section>

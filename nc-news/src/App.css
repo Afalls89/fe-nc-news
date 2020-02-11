@@ -2,20 +2,20 @@
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 150px 100px 100px auto;
+	grid-template-rows: 150px 100px auto;
 	grid-template-areas:
 		"header"
 		"nav"
-		"sortBy"
 		"content";
 }
 
 .header {
 	grid-area: header;
-	border: 2px orangered;
+	border: 2px solid orangered;
 }
 
 #loggedInUser {
+	border: 2px solid springgreen;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -23,7 +23,7 @@
 
 .navbar {
 	grid-area: nav;
-	border: 2px chartreuse;
+	border: 2px solid rgb(248, 4, 236);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -31,40 +31,51 @@
 
 .sortBy {
 	grid-area: sortBy;
-	border: 2px blue;
+	border: 2px solid rgb(0, 234, 255);
 }
 
 .content {
 	grid-area: content;
-	border: 2px red;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: auto 100px auto 100px;
-	grid-template-areas:
-		"content1"
-		"featurebar1"
-		"content2"
-		"featurebar2";
+	border: 2px solid red;
+
 }
 
-.content1 {
-	grid-area: content1;
-	border: 2px black;
+.articles {
+
+	border: 2px solid rgb(162, 12, 248);
+	padding: 5px;
+}
+
+.articleCard {
+	border: 2px solid rgb(162, 12, 248);
 	padding: 5px;
 }
 
 .singleArticle {
-	grid-area: content1;
+	border: 2px solid rgb(241, 16, 16);
 	text-align: left;
+	padding: 10px;
 
 }
 
 .singleArticleVote {
-	grid-area: featurebar1;
+	border: 2px solid sienna;
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	align-content: center;
+	flex-direction: row;
+	justify-content: center;
 
+
+
+
+}
+
+.comments {
+	border: 2px solid black;
+
+}
+
+.commentCard {
+	border: 2px solid cornflowerblue;
+	padding: 10px;
 
 }

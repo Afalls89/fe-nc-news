@@ -7,14 +7,14 @@ class Voter extends Component {
 	};
 
 	handleClick = event => {
-		api.patchVote(this.props.article_id, event, this.props.type);
+		api.patchVote(this.props.id, event, this.props.type);
 		this.setState(currentState => {
 			return { optomisticVotes: currentState.optomisticVotes + event };
 		});
 	};
 	render() {
 		return (
-			<section>
+			<section className="singleArticleVote">
 				<button
 					onClick={() => {
 						this.handleClick(1);
