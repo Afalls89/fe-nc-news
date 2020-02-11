@@ -7,7 +7,7 @@ class Voter extends Component {
 	};
 
 	handleClick = event => {
-		api.patchVote(this.props.article_id, event);
+		api.patchVote(this.props.article_id, event, this.props.type);
 		this.setState(currentState => {
 			return { ...currentState, optomisticVotes: event };
 		});
@@ -19,6 +19,7 @@ class Voter extends Component {
 					onClick={() => {
 						this.handleClick(1);
 					}}
+					disabled={this.state.optomisticVotes > 0}
 				>
 					Like
 				</button>
@@ -27,6 +28,7 @@ class Voter extends Component {
 					onClick={() => {
 						this.handleClick(-1);
 					}}
+					disabled={this.state.optomisticVotes < 0}
 				>
 					Unlike
 				</button>

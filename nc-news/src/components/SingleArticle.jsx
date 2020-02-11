@@ -40,8 +40,8 @@ class SingleArticle extends Component {
 					<li>Votes {votes}</li>
 					<li>Comments {comment_count}</li>
 				</main>
-				<section>
-					<Voter votes={votes} article_id={article_id} />
+				<section className="singleArticleVote">
+					<Voter votes={votes} article_id={article_id} type={"articles"} />
 				</section>
 			</>
 		);

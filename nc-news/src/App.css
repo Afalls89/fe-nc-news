@@ -58,3 +58,13 @@
 	text-align: left;
 
 }
+
+.singleArticleVote {
+	grid-area: featurebar1;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-content: center;
+
+
+}
