@@ -9,7 +9,7 @@ class Voter extends Component {
 	handleClick = event => {
 		api.patchVote(this.props.article_id, event, this.props.type);
 		this.setState(currentState => {
-			return { ...currentState, optomisticVotes: event };
+			return { optomisticVotes: currentState.optomisticVotes + event };
 		});
 	};
 	render() {

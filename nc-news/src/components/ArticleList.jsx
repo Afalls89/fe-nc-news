@@ -11,7 +11,7 @@ class ArticleList extends Component {
 	};
 
 	componentDidMount() {
-		api.getArticles().then(articles => {
+		api.getArticles(undefined, this.props.topic_slug).then(articles => {
 			this.setState({ articles, isLoading: false }, () => {
 				console.log(this.state.articles);
 			});

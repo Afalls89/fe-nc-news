@@ -1,10 +1,10 @@
 const axios = require("axios");
 const URL = "https://be-nc-news-2.herokuapp.com/api/";
 
-const getArticles = sort_by => {
+const getArticles = (sort_by, topic) => {
 	return axios
 		.get(`${URL}articles`, {
-			params: { sort_by }
+			params: { sort_by, topic }
 		})
 		.then(({ data }) => {
 			return data.articles;
@@ -22,4 +22,10 @@ const patchVote = (article_id, inc_vote, type) => {
 	return axios.patch(`${URL}/${type}/${article_id}`, { inc_vote });
 };
 
-module.exports = { getArticles, getSingleArticle, patchVote };
+const getTopics = () => {
+	return axios.get(`${URL}/topics`).then(({ data }) => {
+		return data.topics;
+	});
+};
+
+module.exports = { getArticles, getSingleArticle, patchVote, getTopics };
