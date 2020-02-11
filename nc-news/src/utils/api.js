@@ -35,7 +35,13 @@ const getComments = article_id => {
 		});
 };
 
-const postComment = (username, body) => {};
+const postComment = (username, body, article_id) => {
+	return axios
+		.post(`${URL}/articles/${article_id}/comments`, { username, body })
+		.then(({ data }) => {
+			return data.comment;
+		});
+};
 
 module.exports = {
 	getArticles,

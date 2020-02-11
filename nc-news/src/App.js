@@ -8,7 +8,7 @@ import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
 
 class App extends Component {
-	state = { user: "Andrew" };
+	state = { user: "grumpy19" };
 	render() {
 		return (
 			<div className="App">

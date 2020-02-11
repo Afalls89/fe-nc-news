@@ -23,7 +23,10 @@ class CommentList extends Component {
 
 		return (
 			<section className="commentList">
-				<CommentAdder user={this.props.user} />
+				<CommentAdder
+					user={this.props.user}
+					article_id={this.props.article_id}
+				/>
 				<section className="comments">
 					<CommentCard comments={this.state.comments} />
 				</section>
