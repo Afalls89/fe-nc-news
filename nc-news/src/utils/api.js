@@ -17,4 +17,9 @@ const getSingleArticle = article_id => {
 	});
 };
 
-module.exports = { getArticles, getSingleArticle };
+const patchVote = (article_id, inc_vote) => {
+	console.log(inc_vote);
+	return axios.patch(`${URL}/articles/${article_id}`, { inc_vote });
+};
+
+module.exports = { getArticles, getSingleArticle, patchVote };
