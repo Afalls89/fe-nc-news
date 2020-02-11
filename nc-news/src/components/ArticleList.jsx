@@ -20,7 +20,6 @@ class ArticleList extends Component {
 
 	handleSubmit = submitEvent => {
 		submitEvent.preventDefault();
-		console.log(this.state.sortByOption);
 		api.getArticles(this.state.sortByOption).then(articles => {
 			this.setState(currentState => {
 				return { ...currentState, articles };
@@ -53,7 +52,7 @@ class ArticleList extends Component {
 							<option value="votes">votes</option>
 							<option value="">all</option>
 						</select>
-						<button>submit block</button>
+						<button>Sort By</button>
 					</form>
 				</section>
 				<main className="content">
@@ -62,6 +61,7 @@ class ArticleList extends Component {
 							return (
 								<ArticleCard
 									key={article.article_id}
+									article_id={article.article_id}
 									author={article.author}
 									title={article.title}
 									votes={article.votes}

@@ -52,3 +52,9 @@
 	border: 2px black;
 	padding: 5px;
 }
+
+.singleArticle {
+	grid-area: content1;
+	text-align: left;
+
+}
