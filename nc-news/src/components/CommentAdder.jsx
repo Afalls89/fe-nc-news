@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import Loader from "./Loader";
 
 class CommentAdder extends Component {
 	state = {
-		newComment: "",
-		isLoading: true
+		commentToPost: ""
 	};
 
 	handleChange = ({ target: { value } }) => {
 		this.setState(
 			currentState => {
-				return { ...currentState, newComment: value };
+				return { ...currentState, commentToPost: value };
 			},
 			() => {
-				console.log(this.state.newComment);
+				console.log(this.state.commentToPost);
 			}
 		);
 	};
@@ -24,18 +22,15 @@ class CommentAdder extends Component {
 		api
 			.postComment(
 				this.props.user,
-				this.state.newComment,
+				this.state.commentToPost,
 				this.props.article_id
 			)
 			.then(newComment => {
-				this.setState({ newComment, isLoading: false });
+				this.props.optimisticComment(newComment);
 			});
 	};
 
 	render() {
-		// if (this.state.isLoading) {
-		// 	return Loader();
-		// }
 		return (
 			<section className="commentAdder">
 				<form onSubmit={this.handleSubmit}>

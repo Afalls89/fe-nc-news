@@ -8,7 +8,8 @@ import CommentAdder from "./CommentAdder";
 class CommentList extends Component {
 	state = {
 		comments: [],
-		isLoading: true
+		isLoading: true,
+		newComment: {}
 	};
 
 	componentDidMount() {
@@ -16,6 +17,19 @@ class CommentList extends Component {
 			this.setState({ comments, isLoading: false }, () => {});
 		});
 	}
+
+	optimisticComment = newComment => {
+		this.setState(
+			currentState => {
+				return {
+					comments: [newComment, ...currentState.comments]
+				};
+			},
+			() => {
+				console.log(this.state);
+			}
+		);
+	};
 	render() {
 		if (this.state.isLoading) {
 			return Loader();
@@ -26,6 +40,7 @@ class CommentList extends Component {
 				<CommentAdder
 					user={this.props.user}
 					article_id={this.props.article_id}
+					optimisticComment={this.optimisticComment}
 				/>
 				<section className="comments">
 					<CommentCard comments={this.state.comments} />
