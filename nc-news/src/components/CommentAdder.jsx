@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import ErrDisplayer from "./ErrDisplayer";
 
 class CommentAdder extends Component {
 	state = {
-		commentToPost: ""
+		commentToPost: "",
+		err: false
 	};
 
 	handleChange = ({ target: { value } }) => {
-		this.setState(
-			currentState => {
-				return { ...currentState, commentToPost: value };
-			},
-			() => {
-				console.log(this.state.commentToPost);
-			}
-		);
+		this.setState(currentState => {
+			return { ...currentState, commentToPost: value };
+		});
 	};
 
 	handleSubmit = submitEvent => {
@@ -27,12 +24,18 @@ class CommentAdder extends Component {
 			)
 			.then(newComment => {
 				this.props.optimisticComment(newComment);
+			})
+			.catch(() => {
+				this.setState(currentState => {
+					return { ...currentState, err: true };
+				});
 			});
 	};
 
 	render() {
 		return (
 			<section className="commentAdder">
+				{this.state.err && <p>Sorry you can not comment at this time</p>}
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						<input
