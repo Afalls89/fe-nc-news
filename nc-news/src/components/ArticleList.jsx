@@ -22,11 +22,18 @@ class ArticleList extends Component {
 			})
 			.catch(
 				({
-					response: {
-						data: { msg }
-					}
+					message,...rest
+					// response: {
+					// 	data: { msg }
+					// }
 				}) => {
-					this.setState({ isLoading: false, err: msg });
+					if(message){
+
+						console.log("HELLO");
+						this.setState({ isLoading: false, err: message});
+					 } else {
+						this.setState({ isLoading: false, err: rest.response.data.msg});
+					 }
 				}
 			);
 	}

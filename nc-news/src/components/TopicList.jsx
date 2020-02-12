@@ -2,20 +2,28 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import { Link } from "@reach/router";
+import ErrDisplayer from "./ErrDisplayer";
 
 class TopicList extends Component {
 	state = {
 		topics: [],
-		isLoading: true
+		isLoading: true,
+		err: null
 	};
 
 	componentDidMount() {
-		api.getTopics().then(topics => {
-			this.setState({ topics, isLoading: false }, () => {});
-		});
+		api
+			.getTopics()
+			.then(topics => {
+				this.setState({ topics, isLoading: false, err: false });
+			})
+			.catch(({ message }) => {
+				this.setState({ isLoading: false, err: message });
+			});
 	}
 
 	render() {
+		if (this.state.err) return <ErrDisplayer err={this.state.err} />;
 		if (this.state.isLoading) {
 			return Loader();
 		}
