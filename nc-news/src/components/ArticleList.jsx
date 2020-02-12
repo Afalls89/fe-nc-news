@@ -2,29 +2,53 @@ import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import ErrDisplayer from "./ErrDisplayer";
 
 class ArticleList extends Component {
 	state = {
 		articles: [],
 		isLoading: true,
-		sortByOption: ""
+		sortByOption: "",
+		err: null
 	};
 
 	componentDidMount() {
-		api.getArticles(undefined, this.props.topic_slug).then(articles => {
-			this.setState({ articles, isLoading: false }, () => {
-				console.log(this.state.articles);
-			});
-		});
+		api
+			.getArticles(undefined, this.props.topic_slug)
+			.then(articles => {
+				this.setState(currentState => {
+					return { ...currentState, articles, isLoading: false };
+				});
+			})
+			.catch(
+				({
+					response: {
+						data: { msg }
+					}
+				}) => {
+					this.setState({ isLoading: false, err: msg });
+				}
+			);
 	}
 
 	handleSubmit = submitEvent => {
 		submitEvent.preventDefault();
-		api.getArticles(this.state.sortByOption).then(articles => {
-			this.setState(currentState => {
-				return { ...currentState, articles };
-			});
-		});
+		api
+			.getArticles(this.state.sortByOption)
+			.then(articles => {
+				this.setState(currentState => {
+					return { ...currentState, articles };
+				});
+			})
+			.catch(
+				({
+					response: {
+						data: { msg }
+					}
+				}) => {
+					this.setState({ isLoading: false, err: msg });
+				}
+			);
 	};
 
 	handleChange = ({ target: { value, id } }) => {
@@ -35,6 +59,7 @@ class ArticleList extends Component {
 	};
 
 	render() {
+		if (this.state.err) return <ErrDisplayer err={this.state.err} />;
 		if (this.state.isLoading) {
 			return Loader();
 		}

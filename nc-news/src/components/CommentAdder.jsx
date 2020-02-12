@@ -35,7 +35,11 @@ class CommentAdder extends Component {
 			<section className="commentAdder">
 				<form onSubmit={this.handleSubmit}>
 					<label>
-						<input onChange={this.handleChange}></input>
+						<input
+							className="commentAdderInput"
+							onChange={this.handleChange}
+							required
+						></input>
 					</label>
 					<button>Submit comment</button>
 				</form>

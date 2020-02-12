@@ -1,20 +1,30 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import ErrDisplayer from "./ErrDisplayer";
 
 class Voter extends Component {
 	state = {
-		optimisticVotes: 0
+		optimisticVotes: 0,
+		err: false
 	};
 
-	handleClick = event => {
-		api.patchVote(this.props.id, event, this.props.type);
+	handleClick = voteChange => {
 		this.setState(currentState => {
-			return { optimisticVotes: currentState.optimisticVotes + event };
+			return { optimisticVotes: currentState.optimisticVotes + voteChange };
+		});
+		api.patchVote(this.props.id, voteChange, this.props.type).catch(() => {
+			this.setState(currentState => {
+				return {
+					optimisticVotes: currentState.optimisticVotes - voteChange,
+					err: true
+				};
+			});
 		});
 	};
 	render() {
 		return (
 			<section className="singleArticleVote">
+				{this.state.err && <p>Sorry you can not vote at this time</p>}
 				<button
 					onClick={() => {
 						this.handleClick(1);

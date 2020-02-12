@@ -6,6 +6,7 @@ import { Router } from "@reach/router";
 import SingleArticle from "./components/SingleArticle";
 import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
+import ErrDisplayer from "./components/ErrDisplayer";
 
 class App extends Component {
 	state = { user: "grumpy19" };
@@ -16,9 +17,11 @@ class App extends Component {
 				<NavBar />
 				<Router>
 					<SingleArticle path="/articles/:article_id" user={this.state.user} />
+					<ArticleList path="/articles" />
 					<ArticleList path="/" />
 					<ArticleList path="/topics/:topic_slug" />
 					<TopicList path="/topics" />
+					<ErrDisplayer default />
 				</Router>
 			</div>
 		);

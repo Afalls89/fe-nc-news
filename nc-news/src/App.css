@@ -1,4 +1,5 @@
 .App {
+	background-color: rgba(255, 255, 255, 0.924);
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -9,12 +10,38 @@
 		"content";
 }
 
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .header {
+	background: linear-gradient(-80deg, #84CEEB, #5AB9EA, #c1c8e4, #8860d0);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
 	grid-area: header;
 	border: 2px solid orangered;
 }
 
-#loggedInUser {
+.title {
+	font-size: xx-large;
+	font-family: Coda, sans-serif;
+	font-style:
+
+}
+
+.loggedInUser {
 	border: 2px solid springgreen;
 	display: flex;
 	flex-direction: row;
@@ -22,6 +49,9 @@
 }
 
 .navbar {
+	font-family: Coda, sans-serif;
+	font-size: larger;
+	color: white;
 	grid-area: nav;
 	border: 2px solid rgb(248, 4, 236);
 	display: flex;
@@ -52,9 +82,11 @@
 }
 
 .singleArticle {
-	border: 2px solid rgb(241, 16, 16);
+	background-color: rgb(184, 219, 251);
+	border: 5px solid rgb(255, 255, 255);
+
 	text-align: left;
-	padding: 10px;
+	padding: 20px;
 
 }
 
@@ -71,11 +103,24 @@
 
 .comments {
 	border: 2px solid black;
+	padding: 10px;
 
 }
 
 .commentCard {
-	border: 2px solid cornflowerblue;
+	background-color: rgb(184, 219, 251);
+	border: 5px solid rgb(255, 255, 255);
 	padding: 10px;
+
+}
+
+.commentAdder {
+	border: 2px solid rgb(15, 95, 12);
+	padding: 10px;
+}
+
+.commentAdderInput {
+	min-height: 100px;
+
 
 }

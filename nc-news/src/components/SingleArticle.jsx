@@ -3,20 +3,34 @@ import * as api from "../utils/api";
 import Loader from "./Loader";
 import Voter from "./Voter";
 import CommentList from "./CommentList";
+import ErrDisplayer from "./ErrDisplayer";
 
 class SingleArticle extends Component {
 	state = {
 		singleArticle: {},
-		isLoading: true
+		isLoading: true,
+		err: null
 	};
 
 	componentDidMount() {
-		api.getSingleArticle(this.props.article_id).then(singleArticle => {
-			this.setState({ singleArticle, isLoading: false });
-		});
+		api
+			.getSingleArticle(this.props.article_id)
+			.then(singleArticle => {
+				this.setState({ singleArticle, isLoading: false, err: null });
+			})
+			.catch(
+				({
+					response: {
+						data: { msg }
+					}
+				}) => {
+					this.setState({ isLoading: false, err: msg });
+				}
+			);
 	}
 
 	render() {
+		if (this.state.err) return <ErrDisplayer err={this.state.err} />;
 		if (this.state.isLoading) {
 			return Loader();
 		}

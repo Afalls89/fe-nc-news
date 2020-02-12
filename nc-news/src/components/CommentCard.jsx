@@ -28,17 +28,9 @@ class CommentCard extends Component {
 	}
 
 	optimisticRemoveComment = removeComment => {
-		this.setState(
-			currentState => {
-				return { ...currentState, removeComment };
-			},
-			() => {
-				console.log(
-					this.state.removeComment,
-					"the id of the comment to be deleted"
-				);
-			}
-		);
+		this.setState(currentState => {
+			return { ...currentState, removeComment };
+		});
 	};
 
 	render() {
