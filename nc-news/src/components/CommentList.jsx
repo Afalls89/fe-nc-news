@@ -43,7 +43,7 @@ class CommentList extends Component {
 					optimisticComment={this.optimisticComment}
 				/>
 				<section className="comments">
-					<CommentCard comments={this.state.comments} />
+					<CommentCard comments={this.state.comments} user={this.props.user} />
 				</section>
 			</section>
 		);

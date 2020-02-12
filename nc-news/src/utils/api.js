@@ -43,11 +43,16 @@ const postComment = (username, body, article_id) => {
 		});
 };
 
+const deleteComment = comment_id => {
+	return axios.delete(`${URL}/comments/${comment_id}`);
+};
+
 module.exports = {
 	getArticles,
 	getSingleArticle,
 	patchVote,
 	getTopics,
 	getComments,
-	postComment
+	postComment,
+	deleteComment
 };
