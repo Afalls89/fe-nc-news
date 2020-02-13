@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import ErrDisplayer from "./ErrDisplayer";
 
 class Voter extends Component {
 	state = {

@@ -22,7 +22,6 @@ class ArticleList extends Component {
 			})
 			.catch(({ message, ...rest }) => {
 				if (message) {
-					console.log("HELLO");
 					this.setState({ isLoading: false, err: message });
 				} else {
 					this.setState({ isLoading: false, err: rest.response.data.msg });
@@ -51,7 +50,6 @@ class ArticleList extends Component {
 	};
 
 	handleChange = ({ target: { value, id } }) => {
-		console.log(id);
 		this.setState(currentState => {
 			return { ...currentState, [id]: value };
 		});

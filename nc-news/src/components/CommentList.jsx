@@ -36,16 +36,11 @@ class CommentList extends Component {
 	}
 
 	optimisticComment = newComment => {
-		this.setState(
-			currentState => {
-				return {
-					comments: [newComment, ...currentState.comments]
-				};
-			},
-			() => {
-				console.log(this.state);
-			}
-		);
+		this.setState(currentState => {
+			return {
+				comments: [newComment, ...currentState.comments]
+			};
+		});
 	};
 
 	render() {

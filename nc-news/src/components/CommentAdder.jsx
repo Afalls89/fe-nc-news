@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import ErrDisplayer from "./ErrDisplayer";
 
 class CommentAdder extends Component {
 	state = {
@@ -16,6 +15,9 @@ class CommentAdder extends Component {
 
 	handleSubmit = submitEvent => {
 		submitEvent.preventDefault();
+		this.setState(currentState => {
+			return { ...currentState, commentToPost: "" };
+		});
 		api
 			.postComment(
 				this.props.user,
@@ -42,6 +44,7 @@ class CommentAdder extends Component {
 							className="commentAdderInput"
 							onChange={this.handleChange}
 							required
+							value={this.state.commentToPost}
 						></input>
 					</label>
 					<button>Submit comment</button>

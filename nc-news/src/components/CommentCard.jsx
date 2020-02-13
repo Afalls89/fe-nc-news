@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Voter from "./Voter";
 import DeleteComment from "./DeleteComment";
-import ErrDisplayer from "./ErrDisplayer";
 
 class CommentCard extends Component {
 	state = {
@@ -10,7 +9,6 @@ class CommentCard extends Component {
 
 	optimisticRemoveComment = isRemoved => {
 		this.setState(currentState => {
-			console.log(isRemoved);
 			return { ...currentState, isRemoved };
 		});
 	};

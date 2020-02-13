@@ -30,12 +30,12 @@ class TopicList extends Component {
 
 		return (
 			<main className="content">
-				<section>
+				<section className="topics">
 					<h1>Topics</h1>
 				</section>
 				{this.state.topics.map(topic => {
 					return (
-						<ul key={topic.slug}>
+						<ul key={topic.slug} className="topics">
 							<h4>
 								<Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
 							</h4>

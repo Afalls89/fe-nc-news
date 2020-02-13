@@ -31,7 +31,7 @@
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 	grid-area: header;
-	border: 2px solid orangered;
+	padding: 10px;
 }
 
 .title {
@@ -56,6 +56,13 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+
+}
+
+.mainLinks {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
 }
 
 .sortBy {
@@ -92,8 +99,10 @@
 }
 
 .singleArticleVote {
-	border: 2px solid #8860d0;
-	background-color: #d3bff6;
+
+	background: linear-gradient(-80deg, #84CEEB, #5AB9EA, #c1c8e4, #8860d0);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -104,7 +113,7 @@
 }
 
 .comments {
-	border: 2px solid black;
+
 	padding: 10px;
 
 }
@@ -117,7 +126,7 @@
 }
 
 .commentAdder {
-	border: 2px solid rgb(15, 95, 12);
+
 	padding: 10px;
 }
 
@@ -125,4 +134,10 @@
 	min-height: 100px;
 
 
+}
+
+.topics {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
 }

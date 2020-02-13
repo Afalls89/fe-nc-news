@@ -44,9 +44,7 @@ const postComment = (username, body, article_id) => {
 };
 
 const deleteComment = comment_id => {
-	return axios.delete(`${URL}/comments/${comment_id}`).then(response => {
-		console.log(response);
-	});
+	return axios.delete(`${URL}/comments/${comment_id}`).then(response => {});
 };
 
 module.exports = {
