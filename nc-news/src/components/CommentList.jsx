@@ -42,6 +42,7 @@ class CommentList extends Component {
 			}
 		);
 	};
+
 	render() {
 		if (this.state.err) return <ErrDisplayer err={this.state.err} />;
 		if (this.state.isLoading) {

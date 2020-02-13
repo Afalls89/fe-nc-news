@@ -27,10 +27,16 @@ class CommentCard extends Component {
 		}
 	}
 
-	optimisticRemoveComment = removeComment => {
-		this.setState(currentState => {
-			return { ...currentState, removeComment };
-		});
+	optimisticRemoveComment = (removeComment, err) => {
+		if (!err) {
+			this.setState(currentState => {
+				return { ...currentState, removeComment };
+			});
+		} else if (err) {
+			this.setState(currentState => {
+				return { ...currentState, comments: this.props.comments };
+			});
+		}
 	};
 
 	render() {

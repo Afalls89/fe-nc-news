@@ -20,22 +20,14 @@ class ArticleList extends Component {
 					return { ...currentState, articles, isLoading: false };
 				});
 			})
-			.catch(
-				({
-					message,...rest
-					// response: {
-					// 	data: { msg }
-					// }
-				}) => {
-					if(message){
-
-						console.log("HELLO");
-						this.setState({ isLoading: false, err: message});
-					 } else {
-						this.setState({ isLoading: false, err: rest.response.data.msg});
-					 }
+			.catch(({ message, ...rest }) => {
+				if (message) {
+					console.log("HELLO");
+					this.setState({ isLoading: false, err: message });
+				} else {
+					this.setState({ isLoading: false, err: rest.response.data.msg });
 				}
-			);
+			});
 	}
 
 	handleSubmit = submitEvent => {
