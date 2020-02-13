@@ -1,67 +1,42 @@
 import React, { Component } from "react";
 import Voter from "./Voter";
 import DeleteComment from "./DeleteComment";
+import ErrDisplayer from "./ErrDisplayer";
 
 class CommentCard extends Component {
 	state = {
-		comments: [],
-		removeComment: undefined
+		isRemoved: undefined
 	};
 
-	componentDidMount() {
-		this.setState({ comments: this.props.comments, removeComment: undefined });
-	}
-
-	componentDidUpdate(previousProps, previousState) {
-		if (previousState.removeComment !== this.state.removeComment) {
-			const updatedComments = this.state.comments.filter(comment => {
-				if (comment.comment_id !== this.state.removeComment) {
-					return comment;
-				}
-			});
-			if (previousState.comments.length !== updatedComments.length) {
-				this.setState(currentState => {
-					return { ...currentState, comments: updatedComments };
-				});
-			}
-		}
-	}
-
-	optimisticRemoveComment = (removeComment, err) => {
-		if (!err) {
-			this.setState(currentState => {
-				return { ...currentState, removeComment };
-			});
-		} else if (err) {
-			this.setState(currentState => {
-				return { ...currentState, comments: this.props.comments };
-			});
-		}
+	optimisticRemoveComment = isRemoved => {
+		this.setState(currentState => {
+			console.log(isRemoved);
+			return { ...currentState, isRemoved };
+		});
 	};
 
 	render() {
+		if (this.state.isRemoved) return <p>comment removed</p>;
+
 		return (
-			<section>
-				{this.state.comments.map(comment => {
-					return (
-						<section className="commentCard" key={comment.comment_id}>
-							<p>{comment.body}</p>
-							<Voter
-								votes={comment.votes}
-								id={comment.comment_id}
-								type={"comments"}
-							/>
-							<DeleteComment
-								comment_id={comment.comment_id}
-								author={comment.author}
-								user={this.props.user}
-								optimisticRemoveComment={this.optimisticRemoveComment}
-							/>
-							<li>Author: {comment.author}</li>
-							<li>date created: {comment.created_at}</li>
-						</section>
-					);
-				})}
+			<section className="commentCard">
+				{this.state.isRemoved === false && (
+					<p>Sorry you can not delete comment at this time</p>
+				)}
+				<p>{this.props.comment.body}</p>
+				<Voter
+					votes={this.props.comment.votes}
+					id={this.props.comment.comment_id}
+					type={"comments"}
+				/>
+				<DeleteComment
+					comment_id={this.props.comment.comment_id}
+					author={this.props.comment.author}
+					user={this.props.user}
+					optimisticRemoveComment={this.optimisticRemoveComment}
+				/>
+				<li>Author: {this.props.comment.author}</li>
+				<li>date created: {this.props.comment.created_at}</li>
 			</section>
 		);
 	}

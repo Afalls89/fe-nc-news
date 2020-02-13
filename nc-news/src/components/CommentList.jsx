@@ -17,7 +17,12 @@ class CommentList extends Component {
 		api
 			.getComments(this.props.article_id)
 			.then(comments => {
-				this.setState({ comments, isLoading: false, err: null });
+				this.setState({
+					comments,
+					isLoading: false,
+					err: null,
+					newComment: {}
+				});
 			})
 			.catch(
 				({
@@ -57,7 +62,15 @@ class CommentList extends Component {
 					optimisticComment={this.optimisticComment}
 				/>
 				<section className="comments">
-					<CommentCard comments={this.state.comments} user={this.props.user} />
+					{this.state.comments.map(comment => {
+						return (
+							<CommentCard
+								key={comment.comment_id}
+								comment={comment}
+								user={this.props.user}
+							/>
+						);
+					})}
 				</section>
 			</section>
 		);

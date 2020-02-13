@@ -1,5 +1,5 @@
 .App {
-	background-color: rgba(255, 255, 255, 0.924);
+	background-color: rgb(194, 222, 248);
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -37,12 +37,11 @@
 .title {
 	font-size: xx-large;
 	font-family: Coda, sans-serif;
-	font-style:
 
 }
 
 .loggedInUser {
-	border: 2px solid springgreen;
+
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -53,7 +52,7 @@
 	font-size: larger;
 	color: white;
 	grid-area: nav;
-	border: 2px solid rgb(248, 4, 236);
+
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -61,18 +60,18 @@
 
 .sortBy {
 	grid-area: sortBy;
-	border: 2px solid rgb(0, 234, 255);
+
 }
 
 .content {
 	grid-area: content;
-	border: 2px solid red;
+
 
 }
 
 .articles {
 
-	border: 2px solid rgb(162, 12, 248);
+
 	padding: 5px;
 }
 
@@ -93,7 +92,8 @@
 }
 
 .singleArticleVote {
-	border: 2px solid sienna;
+	border: 2px solid #8860d0;
+	background-color: #d3bff6;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

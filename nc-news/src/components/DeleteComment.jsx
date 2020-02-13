@@ -1,33 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import * as api from "../utils/api";
 
-class DeleteComment extends Component {
-	state = {
-		err: false
-	};
-
-	handleClick = event => {
-		api.deleteComment(this.props.comment_id).catch(() => {
-			this.setState({ err: true });
-			this.props.optimisticRemoveComment(this.props.comment_id, this.state.err);
+function DeleteComment(props) {
+	const handleClick = event => {
+		api.deleteComment(props.comment_id).catch(() => {
+			props.optimisticRemoveComment(false);
 		});
 
-		this.props.optimisticRemoveComment(this.props.comment_id, this.state.err);
+		props.optimisticRemoveComment(true);
 	};
 
-	render() {
-		return (
-			<section>
-				{this.state.err && <p>Sorry you can not delete comment at this time</p>}
-				<button
-					disabled={this.props.author !== this.props.user}
-					onClick={this.handleClick}
-				>
-					Delete comment
-				</button>
-			</section>
-		);
-	}
+	return (
+		<section>
+			<button disabled={props.author !== props.user} onClick={handleClick}>
+				Delete comment
+			</button>
+		</section>
+	);
 }
 
 export default DeleteComment;
