@@ -7,22 +7,29 @@ import SingleArticle from "./components/SingleArticle";
 import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
 import ErrDisplayer from "./components/ErrDisplayer";
+import UserContextProvider from "./context/UserContext";
 
 class App extends Component {
 	state = { user: "grumpy19" };
+
 	render() {
 		return (
 			<div className="App">
-				<Title loggedInUser={this.state.user} />
-				<NavBar />
-				<Router>
-					<SingleArticle path="/articles/:article_id" user={this.state.user} />
-					<ArticleList path="/articles" />
-					<ArticleList path="/" />
-					<ArticleList path="/topics/:topic_slug" />
-					<TopicList path="/topics" />
-					<ErrDisplayer default />
-				</Router>
+				<UserContextProvider>
+					<Title loggedInUser={this.state.user} />
+					<NavBar />
+					<Router>
+						<SingleArticle
+							path="/articles/:article_id"
+							user={this.state.user}
+						/>
+						<ArticleList path="/articles" />
+						<ArticleList path="/" />
+						<ArticleList path="/topics/:topic_slug" />
+						<TopicList path="/topics" />
+						<ErrDisplayer default />
+					</Router>
+				</UserContextProvider>
 			</div>
 		);
 	}

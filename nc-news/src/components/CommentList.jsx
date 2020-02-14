@@ -52,7 +52,6 @@ class CommentList extends Component {
 		return (
 			<section className="commentList">
 				<CommentAdder
-					user={this.props.user}
 					article_id={this.props.article_id}
 					optimisticComment={this.optimisticComment}
 				/>

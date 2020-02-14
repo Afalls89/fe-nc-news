@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import { UserContext } from "../context/UserContext";
 
 class CommentAdder extends Component {
 	state = {
@@ -7,7 +8,10 @@ class CommentAdder extends Component {
 		err: false
 	};
 
+	static contextType = UserContext;
+
 	handleChange = ({ target: { value } }) => {
+		console.log(this.context);
 		this.setState(currentState => {
 			return { ...currentState, commentToPost: value };
 		});
@@ -20,7 +24,7 @@ class CommentAdder extends Component {
 		});
 		api
 			.postComment(
-				this.props.user,
+				this.context.user,
 				this.state.commentToPost,
 				this.props.article_id
 			)
