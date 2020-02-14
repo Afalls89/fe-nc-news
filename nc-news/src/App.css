@@ -12,7 +12,7 @@
 
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 800px) {
 	.articleCard {
 		width: 50%;
 		display: flex;
@@ -25,6 +25,26 @@
 		flex-direction: column;
 		align-content: center;
 	}
+
+	.comments {
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+	}
+
+	.commentCard {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+	}
+
+
+	.commentAdderInput {
+		width: 50%;
+
+	}
+
 }
 
 @keyframes gradient {
@@ -98,8 +118,8 @@
 }
 
 .articleCard {
-	background-color: rgb(184, 219, 251);
-	border: 5px solid rgb(255, 255, 255);
+	background-color: rgb(163, 211, 255);
+	border: 10px solid rgb(194, 222, 248);
 
 	padding: 5px;
 }
@@ -134,19 +154,20 @@
 }
 
 .commentCard {
-	background-color: rgb(184, 219, 251);
-	border: 5px solid rgb(255, 255, 255);
+	background-color: rgb(163, 211, 255);
+	border: 10px solid rgb(194, 222, 248);
 	padding: 10px;
 
 }
 
 .commentAdder {
 
+
 	padding: 10px;
 }
 
 .commentAdderInput {
-	min-height: 100px;
+	min-height: 150px;
 
 
 }
@@ -155,4 +176,14 @@
 	display: flex;
 	flex-direction: column;
 	align-content: center;
+}
+
+.likeButton {
+	padding-right: 3vw;
+	padding-left: 3vw;
+}
+
+.voteCount {
+	padding-right: 5vw;
+	padding-left: 5vw;
 }

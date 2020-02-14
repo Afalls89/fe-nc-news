@@ -25,6 +25,7 @@ class Voter extends Component {
 			<section className="singleArticleVote">
 				{this.state.err && <p>Sorry you can not vote at this time</p>}
 				<button
+					className="likeButton"
 					onClick={() => {
 						this.handleClick(1);
 					}}
@@ -32,8 +33,11 @@ class Voter extends Component {
 				>
 					Like
 				</button>
-				<h3>{this.props.votes + this.state.optimisticVotes}</h3>
+				<h2 className="voteCount">
+					{this.props.votes + this.state.optimisticVotes}
+				</h2>
 				<button
+					className="likeButton"
 					onClick={() => {
 						this.handleClick(-1);
 					}}
