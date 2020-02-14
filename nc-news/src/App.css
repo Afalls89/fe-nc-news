@@ -1,4 +1,5 @@
 .App {
+	width: 100%;
 	background-color: rgb(194, 222, 248);
 	text-align: center;
 	display: grid;
@@ -8,9 +9,23 @@
 		"header"
 		"nav"
 		"content";
+
 }
 
+@media only screen and (min-width: 400px) {
+	.articleCard {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+	}
 
+	.articles {
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+	}
+}
 
 @keyframes gradient {
 	0% {
