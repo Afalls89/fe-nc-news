@@ -27,13 +27,9 @@ in the terminal type:
 ```bash
 git clone <Repository URL>
 
-cd <newly created project folder>
+npm i
 
-git init -y
-
-git remote remove origin
-
-git remote add origin <YOUR-GITHUB-URL>
+npm start
 ```
 
 ### `Prerequisites`
@@ -53,93 +49,6 @@ dependencies that need to be installed to run the application:
 
 ---
 
-### `Installing dependencies:`
-
-navigate to the route directory of your projects repository using VScode or terminal then type the following:
-
-```
-npx create-react-app "my-app"
-
-cd "my-app"
-
-npm install axios
-
-npm install @reach/router
-
-```
-
----
-
-### `Installing development dependencies:`
-
-there are no development dependencies that need to be manually installed. "create-react-app" installs these automatically
-
----
-
-### `Creating scripts`
-
-there are no scripts that need to be manually created. "create-react-app" creates these automatically
-
-in the package.json file you will see the created script files:
-
-```
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-```
-
-### `Starting session in browser`
-
-navigate to the route directory of your app using VScode or terminal then type the following:
-
-```
-npm start
-```
-
-### `Build app for production`
-
-navigate to the route directory of your app using VScode or terminal then type the following:
-
-```
-npm run build
-```
-
-## `Running the tests`
-
-In order to run the application and utils tests, run the following scripts:
-
-```
-npm test-utils
-npm test
-```
-
-### `Break down into end to end tests`
-
-Explain what these tests test and why
-
-```
-
-Give an example
-
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-
-Give an example
-
-```
-
-## `Deployment`
-
-https://github.com/northcoders/fe-nc-news/blob/master/netlify-deployment.md
-
-## Built With
-
 ## Links
 
 Please click here for the Hosted website:
@@ -147,10 +56,6 @@ Please click here for the Hosted website:
 please click here for the Hosted database:
 
 [Heroku] https://be-nc-news-2.herokuapp.com/api - link to hosted webpage
-
-## `Versioning`
-
-We use [GitHub](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## `Authors`
 
